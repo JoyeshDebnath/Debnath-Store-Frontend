@@ -4,8 +4,17 @@ import {
 	ALL_PRODUCT_SUCCESS,
 	ALL_PRODUCT_FAIL,
 	CLEAR_ERRORS,
+	PRODUCT_DETAILS_REQUEST,
+	PRODUCT_DETAILS_SUCCESS,
+	PRODUCT_DETAILS_FAIL,
 } from "../constants/productConstants";
 
+console.log(
+	"HI ",
+	PRODUCT_DETAILS_SUCCESS,
+	PRODUCT_DETAILS_FAIL,
+	PRODUCT_DETAILS_REQUEST
+);
 export const getProduct = () => async (dispatch) => {
 	try {
 		dispatch({
@@ -21,6 +30,28 @@ export const getProduct = () => async (dispatch) => {
 	} catch (error) {
 		dispatch({
 			type: ALL_PRODUCT_FAIL,
+			payload: error.response.data.message,
+		});
+	}
+};
+//getting product details ......
+export const getProductDetails = (id) => async (dispatch) => {
+	try {
+		dispatch({
+			type: PRODUCT_DETAILS_REQUEST,
+		});
+
+		//fetch data
+		const { data } = await axios.get(`/api/v1/product/${id}`); //get all products
+		console.log("Data=", data);
+		console.log("ID", id);
+		dispatch({
+			type: PRODUCT_DETAILS_SUCCESS,
+			payload: data.product, //send the product gotten from backend through the payload
+		});
+	} catch (error) {
+		dispatch({
+			type: PRODUCT_DETAILS_FAIL,
 			payload: error.response.data.message,
 		});
 	}

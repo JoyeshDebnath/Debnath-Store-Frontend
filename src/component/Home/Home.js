@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 // import { CgMouse } from "@react-icons/all-files/";
-import MouseIcon from "@mui/icons-material/Mouse";
+// import MouseIcon from "@mui/icons-material/Mouse";
 import "./Home.css";
+import { MdMouse } from "react-icons/md";
 import Product from "./Product";
 import MetaData from "../layout/MetaData";
 import { getProduct } from "../../actions/productAction";
@@ -21,7 +22,7 @@ const Home = () => {
 			return alert.error(error);
 		}
 		dispatch(getProduct());
-	}, [dispatch, error]);
+	}, [dispatch, error, alert]);
 
 	return (
 		<>
@@ -35,7 +36,7 @@ const Home = () => {
 						<h1>Find Best products below 👇</h1>
 						<a href="#container">
 							<button>
-								Scroll <MouseIcon />
+								Scroll <MdMouse />
 							</button>
 						</a>
 					</div>
@@ -44,7 +45,9 @@ const Home = () => {
 
 					<div className="container" id="container">
 						{products &&
-							products.map((product) => <Product product={product} />)}
+							products.map((product) => (
+								<Product key={product._id} product={product} />
+							))}
 					</div>
 				</>
 			)}

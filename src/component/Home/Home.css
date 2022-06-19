@@ -8,15 +8,62 @@
 	text-align: center;
 	justify-content: center;
 }
+.gharwaLogo {
+	height: 5rem;
+	width: 5rem;
+	box-shadow: rgba(240, 46, 170, 0.4) -5px 5px,
+		rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px,
+		rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;
+	animation: wiggle 2s linear infinite;
+}
+
+/* Keyframes */
+@keyframes wiggle {
+	0%,
+	7% {
+		transform: rotateZ(0);
+	}
+	15% {
+		transform: rotateZ(-15deg);
+	}
+	20% {
+		transform: rotateZ(10deg);
+	}
+	25% {
+		transform: rotateZ(-10deg);
+	}
+	30% {
+		transform: rotateZ(6deg);
+	}
+	35% {
+		transform: rotateZ(-4deg);
+	}
+	40%,
+	100% {
+		transform: rotateZ(0);
+	}
+}
 
 .banner > h1 {
-	margin: 5vmax;
+	margin: 3vmax;
 	font: 600 2.5vmax "Roboto";
+	/* animate */
+	animation: waviy 2s infinite;
+	animation-delay: calc(0.1s * var(--i));
 }
-
-.banner > p {
+@keyframes waviy {
+	0%,
+	40%,
+	100% {
+		transform: translateY(0);
+	}
+	20% {
+		transform: translateY(-20px);
+	}
+}
+/* .banner > p {
 	font: 400 1.5vmax "Lucida Sans";
-}
+} */
 
 .banner > a > button {
 	margin-bottom: 5vmax;

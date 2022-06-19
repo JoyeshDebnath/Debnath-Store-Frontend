@@ -3,7 +3,7 @@ import ReactStars from "react-rating-stars-component";
 import { Link } from "react-router-dom";
 import "./Home.css";
 
-const Product = (props) => {
+const ProductCard = (props) => {
 	const product = props.product;
 	console.log("Product page", product);
 
@@ -29,4 +29,4 @@ const Product = (props) => {
 	);
 };
 
-export default Product;
+export default ProductCard;

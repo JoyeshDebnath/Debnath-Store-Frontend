@@ -3,12 +3,13 @@ import React, { useEffect } from "react";
 // import MouseIcon from "@mui/icons-material/Mouse";
 import "./Home.css";
 import { MdMouse } from "react-icons/md";
-import Product from "./Product";
+import Product from "./ProductCard";
 import MetaData from "../layout/MetaData";
-import { getProduct } from "../../actions/productAction";
+import { getProduct, clearErrors } from "../../actions/productAction";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../layout/Loader/Loader";
 import { useAlert } from "react-alert";
+import gharwaLogo from "../../images/Ghorwa.png";
 
 const Home = () => {
 	const alert = useAlert();
@@ -19,7 +20,8 @@ const Home = () => {
 
 	useEffect(() => {
 		if (error) {
-			return alert.error(error);
+			alert.error(error);
+			dispatch(clearErrors());
 		}
 		dispatch(getProduct());
 	}, [dispatch, error, alert]);
@@ -30,9 +32,10 @@ const Home = () => {
 				<Loader />
 			) : (
 				<>
-					<MetaData title="Kharido" />
+					<MetaData title="Gharwa Tailors" />
 					<div className="banner">
-						<p>Welcome To MY Store</p>
+						<img className="gharwaLogo" src={gharwaLogo} alt="company logo" />
+						{/* <p>Welcome To MY Store</p> */}
 						<h1>Find Best products below 👇</h1>
 						<a href="#container">
 							<button>

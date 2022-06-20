@@ -1,0 +1,67 @@
+.productsHeading {
+	margin: 2vmax auto;
+	width: 15vw;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.17);
+	padding: 2vmax;
+	color: #ef233c;
+	font: 600 1.5vmax "Roboto";
+	text-align: center;
+	font-size: 2rem;
+}
+
+.products {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 1.5vmax;
+	justify-content: center;
+}
+
+.bagIcon {
+	font-size: 30px;
+	color: #3a0ca3;
+}
+
+/* styling for the pagination part  */
+.paginationBox {
+	display: flex;
+	justify-content: center;
+	margin: 6vmax;
+}
+/* ul tages have default class as pagination  */
+.pagination {
+	display: flex;
+	justify-content: center;
+	padding: 0;
+	box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+		rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+		rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.page-item {
+	background-color: #fffcf7;
+	list-style: none;
+	border: 1px solid #000000;
+	padding: 1vmax 1.5vmax;
+	cursor: pointer;
+	transition: all 0.6s;
+}
+.page-item:first-child {
+	border-radius: 6px 0 0 6px;
+}
+.page-item:last-child {
+	border-radius: 0 6px 6px 0;
+}
+
+.page-link {
+	text-decoration: none;
+	font: bolder 1.5vmax "Roboto";
+	color: #184e77;
+}
+
+.page-item:hover {
+	background-color: #e5e5e5;
+}
+
+.pageItemActive {
+	background-color: #e7c6ff;
+	color: #081c15;
+}

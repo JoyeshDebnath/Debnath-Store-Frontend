@@ -38,7 +38,7 @@ const ProductDetails = ({ match }) => {
 	return (
 		<>
 			{loading ? (
-				Loader
+				<Loader />
 			) : (
 				<>
 					<div className="ProductDetails">

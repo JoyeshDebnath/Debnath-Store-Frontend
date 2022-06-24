@@ -6,6 +6,7 @@ import Home from "./component/Home/Home.js";
 import productDetails from "./component/Product/ProductDetails";
 import Products from "./component/Product/Products.js";
 import Search from "./component/Product/Search";
+import LoginSignUp from "./component/User/LoginSignUp";
 // import Loader from "./component/layout/Loader/Loader";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import WebFont from "webfontloader";
@@ -26,6 +27,7 @@ function App() {
 			<Route exact path="/products" component={Products} />
 			<Route path="/products/:keyWord" component={Products} />
 			<Route exact path="/search" component={Search} />
+			<Route exact path="/login" component={LoginSignUp} />
 			<Footer />
 		</Router>
 	);

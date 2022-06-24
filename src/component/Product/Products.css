@@ -12,7 +12,7 @@
 .products {
 	display: flex;
 	flex-wrap: wrap;
-	padding: 1.5vmax;
+	padding: 2vmax;
 	justify-content: center;
 }
 
@@ -64,4 +64,45 @@
 .pageItemActive {
 	background-color: #e7c6ff;
 	color: #081c15;
+}
+
+.filterBox {
+	width: 10vmax;
+	position: absolute;
+	top: 10vmax;
+	left: 4vmax;
+}
+
+@media screen and (max-width: 600px) {
+	.filterBox {
+		width: 20vmax;
+		position: static;
+		margin: auto;
+	}
+
+	.page-link {
+		font: 300 1.8vmax "Roboto";
+	}
+	.category-link {
+		font: 400 1.5vmax "Roboto";
+	}
+}
+
+.categoryBox {
+	padding: 0;
+}
+
+.category-link {
+	list-style: none;
+	cursor: pointer;
+	font: 500 1vmax "Roboto";
+	color: #21479f;
+	margin: 0.4vmax;
+	transition: all 0.6s;
+}
+.category-link:hover {
+	color: #e5383b;
+}
+.filterBox > fieldset {
+	border: 1px solid rgba(0, 0, 0, 0.115);
 }

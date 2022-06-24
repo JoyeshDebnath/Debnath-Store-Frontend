@@ -14,6 +14,7 @@
 	flex-wrap: wrap;
 	padding: 2vmax;
 	justify-content: center;
+	min-height: 30vh;
 }
 
 .bagIcon {
@@ -67,10 +68,13 @@
 }
 
 .filterBox {
-	width: 10vmax;
-	position: absolute;
+	width: 16vmax;
+	position: relative;
 	top: 10vmax;
 	left: 4vmax;
+	padding: 1rem;
+	/* margin-right: 2rem; */
+	box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
 @media screen and (max-width: 600px) {

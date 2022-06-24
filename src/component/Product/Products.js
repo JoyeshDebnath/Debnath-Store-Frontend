@@ -10,7 +10,8 @@ import { load } from "webfontloader";
 import Pagination from "react-js-pagination";
 import Slider from "@mui/material/Slider";
 import Typography from "@mui/material/Typography";
-
+import { useAlert } from "react-alert";
+import MetaData from "../layout/MetaData";
 // Categories for item selection nsd filtering
 
 const categories = [
@@ -35,7 +36,7 @@ const Products = ({ match }) => {
 	const [price, setPrice] = useState([0, 50000]); //for pricing filteres ...
 	const [category, setCategory] = useState("");
 	const [ratings, setRatings] = useState(0); //for ratings
-
+	const alert = useAlert();
 	const dispatch = useDispatch();
 	//set current page number ....
 	const setCurrentPageNo = (e) => {
@@ -66,14 +67,19 @@ const Products = ({ match }) => {
 	console.log("Products componenent =======", keyword);
 	//usen effect
 	useEffect(() => {
+		if (error) {
+			alert.error(error);
+			dispatch(clearErrors());
+		}
 		dispatch(getProduct(keyword, currentPage, price, category, ratings)); //get all produxcts
-	}, [dispatch, keyword, currentPage, price, category, ratings]);
+	}, [dispatch, keyword, currentPage, price, category, ratings, alert, error]);
 	return (
 		<>
 			{loading ? (
 				<Loader />
 			) : (
 				<>
+					<MetaData title="Football Hub" />
 					<h2 className="productsHeading">
 						Products <TbPaperBag className="bagIcon" />{" "}
 					</h2>

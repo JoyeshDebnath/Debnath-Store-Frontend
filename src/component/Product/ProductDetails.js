@@ -8,7 +8,7 @@ import { VscPreview } from "react-icons/vsc";
 import ReviewCard from "./ReviewCard.js";
 import Loader from "../layout/Loader/Loader";
 import { useAlert } from "react-alert";
-
+import MetaData from "../layout/MetaData";
 const ProductDetails = ({ match }) => {
 	const dispatch = useDispatch();
 	const alert = useAlert();
@@ -41,6 +41,7 @@ const ProductDetails = ({ match }) => {
 				<Loader />
 			) : (
 				<>
+					<MetaData title="Football Hub" />
 					<div className="ProductDetails">
 						<div>
 							<Carousel className="carousel">

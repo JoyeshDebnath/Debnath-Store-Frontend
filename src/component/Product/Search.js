@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Search.css";
-
+import MetaData from "../layout/MetaData";
 const Search = ({ history }) => {
 	const [keyword, setKeyword] = useState("");
 	// function of handling submit
@@ -16,6 +16,7 @@ const Search = ({ history }) => {
 
 	return (
 		<>
+			<MetaData title={`Search a Product # Football Hub`} />
 			<form className="searchBox" onSubmit={searchSubmitHandler}>
 				<input
 					type="text"

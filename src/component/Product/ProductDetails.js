@@ -41,7 +41,7 @@ const ProductDetails = ({ match }) => {
 				<Loader />
 			) : (
 				<>
-					<MetaData title="Football Hub" />
+					<MetaData title={`${product.name}--Football hub`} />
 					<div className="ProductDetails">
 						<div>
 							<Carousel className="carousel">

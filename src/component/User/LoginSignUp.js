@@ -25,22 +25,23 @@ const LoginSignUp = () => {
 
 	//siwytch tabs
 	const switchTabs = (e, tab) => {
-		//for login
+		//For login
 		if (tab === "login") {
 			switcherTab.current.classList.add("shiftToNeutral");
 			switcherTab.current.classList.remove("shiftToRight");
+
 			registerTab.current.classList.remove("shiftToNeutralForm");
 			loginTab.current.classList.remove("shiftToLeft");
 		}
-		// for register
+		//For register
 		if (tab === "register") {
 			switcherTab.current.classList.add("shiftToRight");
 			switcherTab.current.classList.remove("shiftToNeutral");
-			registerTab.current.classList.remove("shiftToNeutralForm");
-			loginTab.current.classList.remove("shiftToLeft");
+
+			registerTab.current.classList.add("shiftToNeutralForm");
+			loginTab.current.classList.add("shiftToLeft");
 		}
 	};
-
 	// Login submit
 	const loginSubmit = () => {
 		console.log("login Form Sumbitted ");
@@ -80,7 +81,7 @@ const LoginSignUp = () => {
 			<div className="LoginSignUpContainer">
 				<div className="LoginSignUpBox">
 					<div>
-						<div className="login_sign_up_toggle">
+						<div className="login_signUp_toggle">
 							<p onClick={(e) => switchTabs(e, "login")}>LOGIN</p>
 							<p onClick={(e) => switchTabs(e, "register")}>REGISTER</p>
 						</div>
@@ -111,7 +112,7 @@ const LoginSignUp = () => {
 						<Link to="/password/forget"> ForgetPassword?</Link>
 						<input type="submit" value="login" className="loginBtn" />
 					</form>
-
+					{/* 
 					<form
 						className="signUpForm"
 						ref={registerTab}
@@ -163,6 +164,57 @@ const LoginSignUp = () => {
 							className="signUpBtn"
 							// disabled={loading ? true : false}
 						/>
+					</form> */}
+					<form
+						className="signUpForm"
+						ref={registerTab}
+						encType="multipart/form-data"
+						onSubmit={registerSubmit}
+					>
+						<div className="signUpName">
+							<FaceIcon />
+							<input
+								type="text"
+								placeholder="Name"
+								required
+								name="name"
+								value={name}
+								onChange={registerDataChange}
+							/>
+						</div>
+						<div className="signUpEmail">
+							<MdEmail />
+							<input
+								type="email"
+								placeholder="Email"
+								required
+								name="email"
+								value={email}
+								onChange={registerDataChange}
+							/>
+						</div>
+						<div className="signUpPassword">
+							<AiFillUnlock />
+							<input
+								type="password"
+								placeholder="Password"
+								required
+								name="password"
+								value={password}
+								onChange={registerDataChange}
+							/>
+						</div>
+
+						<div id="registerImage">
+							<img src={avatarPreview} alt="Avatar Preview" />
+							<input
+								type="file"
+								name="avatar"
+								accept="image/*"
+								onChange={registerDataChange}
+							/>
+						</div>
+						<input type="submit" value="Register" className="signUpBtn" />
 					</form>
 				</div>
 			</div>

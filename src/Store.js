@@ -5,11 +5,14 @@ import {
 	productReducer,
 	productDetailsReducer,
 } from "./reducers/productReducer";
+
+import { userReducer } from "./reducers/userReducer";
 //combine the reducers
 const reducer = combineReducers({
 	products: productReducer, //product reducer for al the product related works
 
 	productDetails: productDetailsReducer, //product details reducer for all product details works
+	user: userReducer, //user reducer for all the autheniotcation purpose
 });
 
 //intial state

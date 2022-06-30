@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import "./LoginSignUp.css";
+import FaceIcon from "@mui/icons-material/Face";
 import Loader from "../layout/Loader/Loader";
 import { MdEmail } from "react-icons/md";
 import { AiFillUnlock } from "react-icons/ai";
@@ -12,6 +13,16 @@ const LoginSignUp = () => {
 	// usestates
 	const [loginEmail, setLoginEmail] = useState("");
 	const [loginPassword, setLoginPassword] = useState("");
+	// user object usestate
+	const [user, setUser] = useState({
+		name: "",
+		email: "",
+		password: "",
+	});
+	const { name, email, password } = user;
+	const [avatar, setAvatar] = useState(""); //avatar set
+	const [avatarPreview, setAvatarPreview] = useState("/Profile.png");
+
 	//siwytch tabs
 	const switchTabs = (e, tab) => {
 		//for login
@@ -32,7 +43,35 @@ const LoginSignUp = () => {
 
 	// Login submit
 	const loginSubmit = () => {
-		console.log("Form Sumbitted ");
+		console.log("login Form Sumbitted ");
+	};
+	// regeister submit handler below
+	const registerSubmit = (e) => {
+		e.preventDefault();
+		const myForm = new FormData();
+		myForm.set("name", name);
+		myForm.set("email", email);
+		myForm.set("password", password);
+		myForm.set("avatar", avatar);
+		console.log("sign up form submitted ");
+	};
+
+	// registerDataChange
+
+	const registerDataChange = (e) => {
+		if (e.target.name === "avatar") {
+			const reader = new FileReader();
+			reader.onload = () => {
+				if (reader.readyState === 2) {
+					//done state
+					setAvatarPreview(reader.result);
+					setAvatar(reader.result);
+				}
+			};
+			reader.readAsDataURL(e.target.files[0]);
+		} else {
+			setUser({ ...user, [e.target.name]: e.target.value });
+		}
 	};
 
 	//login sumbit
@@ -71,6 +110,59 @@ const LoginSignUp = () => {
 						{/* HiOutlineLightBulb */}
 						<Link to="/password/forget"> ForgetPassword?</Link>
 						<input type="submit" value="login" className="loginBtn" />
+					</form>
+
+					<form
+						className="signUpForm"
+						ref={registerTab}
+						encType="multipart/form-data"
+						onSubmit={registerSubmit}
+					>
+						<div className="signUpName">
+							<FaceIcon />
+							<input
+								type="text"
+								placeholder="Enter Name"
+								required
+								value={name}
+								onchange={registerDataChange}
+							/>
+						</div>
+						<div className="signUpEmail">
+							<MdEmail />
+							<input
+								type="email"
+								placeholder="Enter Email"
+								required
+								value={email}
+								onChange={registerDataChange}
+							/>
+						</div>
+						<div className="registerPassword">
+							<AiFillUnlock />
+							<input
+								ttype="password"
+								placeholder="Enter Password"
+								required
+								value={password}
+								onChange={registerDataChange}
+							/>
+						</div>
+						<div id="registerImage">
+							<img src={avatarPreview} alt="Avatar Preview" />
+							<input
+								type="file"
+								name="avatar"
+								accept="image/*"
+								onChange={registerDataChange}
+							/>
+						</div>
+						<input
+							type="submit"
+							value="Register"
+							className="signUpBtn"
+							// disabled={loading ? true : false}
+						/>
 					</form>
 				</div>
 			</div>
